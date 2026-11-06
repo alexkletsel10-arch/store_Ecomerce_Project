@@ -303,6 +303,106 @@ public class DataProviders {
         reader.close();
         return list.iterator();
     }
+    @DataProvider(name = "shortZipCodeFieldCsv")
+    public Iterator<Object[]> shortZipCodeFieldCsv() throws IOException {
+        List<Object[]> list = new ArrayList<>();
+
+        BufferedReader reader = new BufferedReader(
+                new FileReader(new File("src/test/resources/shortZipCodeFieldRegCsv.csv"))
+        );
+        String line = reader.readLine();
+        while (line != null) {
+
+            String[] split = line.split(",",-1);
+
+            list.add(new Object[]{split[0],split[1],split[2],split[3],split[4],split[5],split[6],split[7],split[8],split[9],split[10],split[11],split[12]}); // email, password
+
+            line = reader.readLine();
+        }
+
+        reader.close();
+        return list.iterator();
+    }
+    @DataProvider(name = "emptyZipCodeFieldCsv")
+    public Iterator<Object[]> emptyZipCodeFieldCsv() throws IOException {
+        List<Object[]> list = new ArrayList<>();
+
+        BufferedReader reader = new BufferedReader(
+                new FileReader(new File("src/test/resources/emptyZipCodeFieldRegCsv.csv"))
+        );
+        String line = reader.readLine();
+        while (line != null) {
+
+            String[] split = line.split(",",-1);
+
+            list.add(new Object[]{split[0],split[1],split[2],split[3],split[4],split[5],split[6],split[7],split[8],split[9],split[10],split[11],split[12]}); // email, password
+
+            line = reader.readLine();
+        }
+
+        reader.close();
+        return list.iterator();
+    }
+    @DataProvider(name = "emptyCountryFieldCsv")
+    public Iterator<Object[]> emptyCountryFieldCsv() throws IOException {
+        List<Object[]> list = new ArrayList<>();
+
+        BufferedReader reader = new BufferedReader(
+                new FileReader(new File("src/test/resources/emptyCountryFieldRegCsv.csv"))
+        );
+        String line = reader.readLine();
+        while (line != null) {
+
+            String[] split = line.split(",",-1);
+
+            list.add(new Object[]{split[0],split[1],split[2],split[3],split[4],split[5],split[6],split[7],split[8],split[9],split[10],split[11],split[12]}); // email, password
+
+            line = reader.readLine();
+        }
+
+        reader.close();
+        return list.iterator();
+    }
+    @DataProvider(name = "emptyLoginNameFieldCsv")
+    public Iterator<Object[]> emptyLoginNameFieldCsv() throws IOException {
+        List<Object[]> list = new ArrayList<>();
+
+        BufferedReader reader = new BufferedReader(
+                new FileReader(new File("src/test/resources/emptyLoginNameFieldRegCsv.csv"))
+        );
+        String line = reader.readLine();
+        while (line != null) {
+
+            String[] split = line.split(",",-1);
+
+            list.add(new Object[]{split[0],split[1],split[2],split[3],split[4],split[5],split[6],split[7],split[8],split[9],split[10],split[11],split[12]}); // email, password
+
+            line = reader.readLine();
+        }
+
+        reader.close();
+        return list.iterator();
+    }
+    @DataProvider(name = "invalidLoginNameFieldCsv")
+    public Iterator<Object[]> invalidLoginNameFieldCsv() throws IOException {
+        List<Object[]> list = new ArrayList<>();
+
+        BufferedReader reader = new BufferedReader(
+                new FileReader(new File("src/test/resources/invalidLoginNameFieldRegCsv.csv"))
+        );
+        String line = reader.readLine();
+        while (line != null) {
+
+            String[] split = line.split(",");
+
+            list.add(new Object[]{split[0],split[1],split[2],split[3],split[4],split[5],split[6],split[7],split[8],split[9],split[10],split[11],split[12]}); // email, password
+
+            line = reader.readLine();
+        }
+
+        reader.close();
+        return list.iterator();
+    }
     @DataProvider(name = "pocoEmptyPasswordFieldCsv")
     public Iterator<Object[]> pocoEmptyPasswordFieldCsv() throws IOException {
         List<Object[]> list = new ArrayList<>();

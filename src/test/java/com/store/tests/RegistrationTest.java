@@ -158,6 +158,53 @@ public class RegistrationTest extends TestBase {
                 .clickOnContinueButtonOnRegPage()
                 .verifyTooltipMessage("Please select a region / state!");
     }
+    @Test(dataProvider = "shortZipCodeFieldCsv", dataProviderClass = DataProviders.class)
+    public void shortZipCodeField(String firstN, String lastN, String emailF, String phoneF, String companyF, String address1F, String cityF, String regionF, String zipCodeF, String countryF, String loginNameF, String password, String confirmP){
+        new RegistrationPage(driver)
+                .selectContinueRegistrationButton()
+                .fillInRegistrationForm("yes", firstN, lastN, emailF, phoneF, companyF, address1F, cityF, regionF, zipCodeF, countryF, loginNameF, password, confirmP)
+                .selectCheckBox()
+                .clickOnContinueButtonOnRegPage()
+                .verifyTooltipMessage("Zip/postal code must be between 3 and 10 characters!");
+    }
+    @Test(dataProvider = "emptyZipCodeFieldCsv", dataProviderClass = DataProviders.class)
+    public void emtyZipCodeField(String firstN, String lastN, String emailF, String phoneF, String companyF, String address1F, String cityF, String regionF, String zipCodeF, String countryF, String loginNameF, String password, String confirmP){
+        new RegistrationPage(driver)
+                .selectContinueRegistrationButton()
+                .fillInRegistrationForm("yes", firstN, lastN, emailF, phoneF, companyF, address1F, cityF, regionF, zipCodeF, countryF, loginNameF, password, confirmP)
+                .selectCheckBox()
+                .clickOnContinueButtonOnRegPage()
+                .verifyTooltipMessage("Zip/postal code must be between 3 and 10 characters!");
+    }
+    @Test(dataProvider = "emptyCountryFieldCsv", dataProviderClass = DataProviders.class)
+    public void emptyCountryField(String firstN, String lastN, String emailF, String phoneF, String companyF, String address1F, String cityF, String regionF, String zipCodeF, String countryF, String loginNameF, String password, String confirmP){
+        new RegistrationPage(driver)
+                .selectContinueRegistrationButton()
+                .fillInRegistrationForm("yes", firstN, lastN, emailF, phoneF, companyF, address1F, cityF, regionF, zipCodeF, countryF, loginNameF, password, confirmP)
+                .selectCheckBox()
+                .clickOnContinueButtonOnRegPage()
+                .verifyTooltipMessage("Zip/postal code must be between 3 and 10 characters!");
+    }
+    @Test(dataProvider = "emptyLoginNameFieldCsv", dataProviderClass = DataProviders.class)
+    public void emptyLoginNameField(String firstN, String lastN, String emailF, String phoneF, String companyF, String address1F, String cityF, String regionF, String zipCodeF, String countryF, String loginNameF, String password, String confirmP){
+        new RegistrationPage(driver)
+                .selectContinueRegistrationButton()
+                .fillInRegistrationForm("yes", firstN, lastN, emailF, phoneF, companyF, address1F, cityF, regionF, zipCodeF, countryF, loginNameF, password, confirmP)
+                .selectCheckBox()
+                .clickOnContinueButtonOnRegPage()
+                .verifyTooltipMessage("Login name must be alphanumeric only and between 5 and 64 characters!");
+    }
+    @Test(dataProvider = "invalidLoginNameFieldCsv", dataProviderClass = DataProviders.class)
+    public void invalidLoginNameField(String firstN, String lastN, String emailF, String phoneF, String companyF, String address1F, String cityF, String regionF, String zipCodeF, String countryF, String loginNameF, String password, String confirmP){
+        new RegistrationPage(driver)
+                .selectContinueRegistrationButton()
+                .fillInRegistrationForm("yes", firstN, lastN, emailF, phoneF, companyF, address1F, cityF, regionF, zipCodeF, countryF, loginNameF, password, confirmP)
+                .selectCheckBox()
+                .clickOnContinueButtonOnRegPage()
+                .verifyTooltipMessage("Login name must be alphanumeric only and between 5 and 64 characters!");
+    }
+
+
     @Test(dataProvider = "pocoEmptyPasswordFieldCsv", dataProviderClass = DataProviders.class)
     public void emptyPasswordFieldRegistrationTest(String firstN, String lastN, String emailF, String phoneF, String companyF, String address1F,String cityF,String regionF, String zipCodeF, String countryF, String loginNameF, String password, String confirmP) {
         new RegistrationPage(driver)
