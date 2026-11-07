@@ -403,76 +403,135 @@ public class DataProviders {
         reader.close();
         return list.iterator();
     }
-    @DataProvider(name = "pocoEmptyPasswordFieldCsv")
-    public Iterator<Object[]> pocoEmptyPasswordFieldCsv() throws IOException {
+    @DataProvider(name = "shortLoginNameFieldCsv")
+    public Iterator<Object[]> shortLoginNameFieldCsv() throws IOException {
         List<Object[]> list = new ArrayList<>();
 
         BufferedReader reader = new BufferedReader(
-                new FileReader(new File("src/test/resources/emptyPasswordFieldCsv.csv"))
+                new FileReader(new File("src/test/resources/shortLoginNameFieldRegCsv.csv"))
+        );
+        String line = reader.readLine();
+        while (line != null) {
+
+            String[] split = line.split(",");
+
+            list.add(new Object[]{split[0],split[1],split[2],split[3],split[4],split[5],split[6],split[7],split[8],split[9],split[10],split[11],split[12]}); // email, password
+
+            line = reader.readLine();
+        }
+
+        reader.close();
+        return list.iterator();
+    }
+    @DataProvider(name = "tooLongLoginNameFieldCsv")
+    public Iterator<Object[]> tooLongLoginNameFieldCsv() throws IOException {
+        List<Object[]> list = new ArrayList<>();
+
+        BufferedReader reader = new BufferedReader(
+                new FileReader(new File("src/test/resources/tooLoginNameFieldRegCsv.csv"))
+        );
+        String line = reader.readLine();
+        while (line != null) {
+
+            String[] split = line.split(",");
+
+            list.add(new Object[]{split[0],split[1],split[2],split[3],split[4],split[5],split[6],split[7],split[8],split[9],split[10],split[11],split[12]}); // email, password
+
+            line = reader.readLine();
+        }
+
+        reader.close();
+        return list.iterator();
+    }
+    @DataProvider(name = "storeEmptyPasswordFieldCsv")
+    public Iterator<Object[]> emptyPasswordFieldCsv() throws IOException {
+        List<Object[]> list = new ArrayList<>();
+
+        BufferedReader reader = new BufferedReader(
+                new FileReader(new File("src/test/resources/emptyPasswordFieldRegCsv.csv"))
         );
         String line = reader.readLine();
         while (line != null) {
 
             String[] split = line.split(",",-1);
 
-            list.add(new Object[]{split[0],split[1],split[2],split[3],split[4],split[5]}); // email, password
+            list.add(new Object[]{split[0],split[1],split[2],split[3],split[4],split[5],split[6],split[7],split[8],split[9],split[10],split[11],split[12]}); // email, password
 
             line = reader.readLine();
         }
         reader.close();
         return list.iterator();
     }
-    @DataProvider(name = "pocoShortPasswordFieldCsv")
-    public Iterator<Object[]> pocoShortPasswordFieldCsv() throws IOException {
+    @DataProvider(name = "storeShortPasswordFieldCsv")
+    public Iterator<Object[]> storeShortPasswordFieldCsv() throws IOException {
         List<Object[]> list = new ArrayList<>();
 
         BufferedReader reader = new BufferedReader(
-                new FileReader(new File("src/test/resources/shortPasswordFieldCsv.csv"))
+                new FileReader(new File("src/test/resources/shortPasswordFieldRegCsv.csv"))
         );
         String line = reader.readLine();
         while (line != null) {
 
-            String[] split = line.split(",",-1);
+            String[] split = line.split(",");
 
-            list.add(new Object[]{split[0],split[1],split[2],split[3],split[4],split[5]}); // email, password
+            list.add(new Object[]{split[0],split[1],split[2],split[3],split[4],split[5],split[6],split[7],split[8],split[9],split[10],split[11],split[12]}); // email, password
 
             line = reader.readLine();
         }
         reader.close();
         return list.iterator();
     }
-    @DataProvider(name = "pocoMisMatchEmptyConfirmPasswordFieldCsv")
-    public Iterator<Object[]> pocoEmptyConfirmPasswordFieldCsv() throws IOException {
+    @DataProvider(name = "tooLongPasswordFieldCsv")
+    public Iterator<Object[]> tooLongPasswordFieldCsv() throws IOException {
         List<Object[]> list = new ArrayList<>();
 
         BufferedReader reader = new BufferedReader(
-                new FileReader(new File("src/test/resources/mismatchConfirmPasswordFieldCsv.csv"))
+                new FileReader(new File("src/test/resources/tooLongPasswordFieldRegCsv.csv"))
         );
         String line = reader.readLine();
         while (line != null) {
 
-            String[] split = line.split(",",-1);
+            String[] split = line.split(",");
 
-            list.add(new Object[]{split[0],split[1],split[2],split[3],split[4],split[5]}); // email, password
+            list.add(new Object[]{split[0],split[1],split[2],split[3],split[4],split[5],split[6],split[7],split[8],split[9],split[10],split[11],split[12]}); // email, password
 
             line = reader.readLine();
         }
         reader.close();
         return list.iterator();
     }
-    @DataProvider(name = "pocoMisMatchInvalidConfirmPasswordFieldCsv")
-    public Iterator<Object[]> pocoMisMatchInvalidConfirmPasswordFieldCsv() throws IOException {
+    @DataProvider(name = "storeMisMatchInvalidConfirmPasswordFieldCsv")
+    public Iterator<Object[]> storeEmptyConfirmPasswordFieldCsv() throws IOException {
         List<Object[]> list = new ArrayList<>();
 
         BufferedReader reader = new BufferedReader(
-                new FileReader(new File("src/test/resources/mismatchInvalidConfirmationPasswordFieldCsv.csv"))
+                new FileReader(new File("src/test/resources/confirmationPasswordMismatchFieldRegCsv.csv"))
+        );
+        String line = reader.readLine();
+        while (line != null) {
+
+            String[] split = line.split(",");
+
+            list.add(new Object[]{split[0],split[1],split[2],split[3],split[4],split[5],split[6],split[7],split[8],split[9],split[10],split[11],split[12]}); // email, password
+
+            line = reader.readLine();
+        }
+        reader.close();
+        return list.iterator();
+    }
+    @DataProvider(name = "storeMisMatchEmptyConfirmPasswordFieldCsv")
+    public Iterator<Object[]> storeMisMatchEmptyConfirmPasswordFieldCsv() throws IOException {
+        List<Object[]> list = new ArrayList<>();
+
+        BufferedReader reader = new BufferedReader(
+                new FileReader(new File("src/test/resources/emptyConfirmationPasswordMismatchFieldRegCsv.csv"))
         );
         String line = reader.readLine();
         while (line != null) {
 
             String[] split = line.split(",",-1);
 
-            list.add(new Object[]{split[0],split[1],split[2],split[3],split[4],split[5]}); // email, password
+            list.add(new Object[]{split[0],split[1],split[2],split[3],split[4],split[5],split[6],split[7],split[8],split[9],split[10],split[11],split[12]}); // email, password
 
             line = reader.readLine();
         }

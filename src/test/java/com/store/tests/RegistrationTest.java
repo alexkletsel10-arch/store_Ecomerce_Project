@@ -203,9 +203,26 @@ public class RegistrationTest extends TestBase {
                 .clickOnContinueButtonOnRegPage()
                 .verifyTooltipMessage("Login name must be alphanumeric only and between 5 and 64 characters!");
     }
+    @Test(dataProvider = "shortLoginNameFieldCsv", dataProviderClass = DataProviders.class)
+    public void shortLoginNameField(String firstN, String lastN, String emailF, String phoneF, String companyF, String address1F, String cityF, String regionF, String zipCodeF, String countryF, String loginNameF, String password, String confirmP){
+        new RegistrationPage(driver)
+                .selectContinueRegistrationButton()
+                .fillInRegistrationForm("yes", firstN, lastN, emailF, phoneF, companyF, address1F, cityF, regionF, zipCodeF, countryF, loginNameF, password, confirmP)
+                .selectCheckBox()
+                .clickOnContinueButtonOnRegPage()
+                .verifyTooltipMessage("Login name must be alphanumeric only and between 5 and 64 characters!");
+    }
+    @Test(dataProvider = "tooLongLoginNameFieldCsv", dataProviderClass = DataProviders.class)
+    public void tooLoginNameField(String firstN, String lastN, String emailF, String phoneF, String companyF, String address1F, String cityF, String regionF, String zipCodeF, String countryF, String loginNameF, String password, String confirmP){
+        new RegistrationPage(driver)
+                .selectContinueRegistrationButton()
+                .fillInRegistrationForm("yes", firstN, lastN, emailF, phoneF, companyF, address1F, cityF, regionF, zipCodeF, countryF, loginNameF, password, confirmP)
+                .selectCheckBox()
+                .clickOnContinueButtonOnRegPage()
+                .verifyTooltipMessage("Login name must be alphanumeric only and between 5 and 64 characters!");
+    }
 
-
-    @Test(dataProvider = "pocoEmptyPasswordFieldCsv", dataProviderClass = DataProviders.class)
+    @Test(dataProvider = "storeEmptyPasswordFieldCsv", dataProviderClass = DataProviders.class)
     public void emptyPasswordFieldRegistrationTest(String firstN, String lastN, String emailF, String phoneF, String companyF, String address1F,String cityF,String regionF, String zipCodeF, String countryF, String loginNameF, String password, String confirmP) {
         new RegistrationPage(driver)
                 .selectContinueRegistrationButton()
@@ -214,7 +231,7 @@ public class RegistrationTest extends TestBase {
                 .clickOnContinueButtonOnRegPage()
                 .verifyTooltipMessage("Password must be between 4 and 20 characters!");
     }
-    @Test(dataProvider = "pocoShortPasswordFieldCsv", dataProviderClass = DataProviders.class)
+    @Test(dataProvider = "storeShortPasswordFieldCsv", dataProviderClass = DataProviders.class)
     public void shortPasswordFieldRegistrationTest(String firstN, String lastN, String emailF, String phoneF, String companyF, String address1F,String cityF,String regionF, String zipCodeF, String countryF, String loginNameF, String password, String confirmP) {
         new RegistrationPage(driver)
                 .selectContinueRegistrationButton()
@@ -223,16 +240,16 @@ public class RegistrationTest extends TestBase {
                 .clickOnContinueButtonOnRegPage()
                 .verifyTooltipMessage("Password must be between 4 and 20 characters!");
     }
-    @Test(dataProvider = "pocoMisMatchEmptyConfirmPasswordFieldCsv", dataProviderClass = DataProviders.class)
-    public void misMatchEmptyConfirmFieldRegistrationTest(String firstN, String lastN, String emailF, String phoneF, String companyF, String address1F,String cityF,String regionF, String zipCodeF, String countryF, String loginNameF, String password, String confirmP) {
+    @Test(dataProvider = "tooLongPasswordFieldCsv", dataProviderClass = DataProviders.class)
+    public void tooLongPasswordFieldRegistrationTest(String firstN, String lastN, String emailF, String phoneF, String companyF, String address1F,String cityF,String regionF, String zipCodeF, String countryF, String loginNameF, String password, String confirmP) {
         new RegistrationPage(driver)
                 .selectContinueRegistrationButton()
                 .fillInRegistrationForm("no", firstN, lastN, emailF, phoneF, companyF, address1F, cityF, regionF, zipCodeF, countryF, loginNameF, password, confirmP)
                 .selectCheckBox()
                 .clickOnContinueButtonOnRegPage()
-                .verifyTooltipMessage("Password confirmation does not match password!");
+                .verifyTooltipMessage("Password must be between 4 and 20 characters!");
     }
-    @Test(dataProvider = "pocoMisMatchInvalidConfirmPasswordFieldCsv", dataProviderClass = DataProviders.class)
+    @Test(dataProvider = "storeMisMatchInvalidConfirmPasswordFieldCsv", dataProviderClass = DataProviders.class)
     public void misMatchInvalidConfirmFieldRegistrationTest(String firstN, String lastN, String emailF, String phoneF, String companyF, String address1F,String cityF,String regionF, String zipCodeF, String countryF, String loginNameF, String password, String confirmP) {
         new RegistrationPage(driver)
                 .selectContinueRegistrationButton()
@@ -241,7 +258,16 @@ public class RegistrationTest extends TestBase {
                 .clickOnContinueButtonOnRegPage()
                 .verifyTooltipMessage("Password confirmation does not match password!");
     }
-    @Test(dataProvider = "pocoSuccessReg", dataProviderClass = DataProviders.class)
+    @Test(dataProvider = "storeMisMatchEmptyConfirmPasswordFieldCsv", dataProviderClass = DataProviders.class)
+    public void misMatchEmptyConfirmFieldRegistrationTest(String firstN, String lastN, String emailF, String phoneF, String companyF, String address1F,String cityF,String regionF, String zipCodeF, String countryF, String loginNameF, String password, String confirmP) {
+        new RegistrationPage(driver)
+                .selectContinueRegistrationButton()
+                .fillInRegistrationForm("no", firstN, lastN, emailF, phoneF, companyF, address1F, cityF, regionF, zipCodeF, countryF, loginNameF, password, confirmP)
+                .selectCheckBox()
+                .clickOnContinueButtonOnRegPage()
+                .verifyTooltipMessage("Password confirmation does not match password!");
+    }
+    @Test(dataProvider = "storeSuccessReg", dataProviderClass = DataProviders.class)
     public void unselectedTermsAndConditionsCheckBox(String firstN, String lastN, String emailF, String phoneF, String companyF, String address1F,String cityF,String regionF, String zipCodeF, String countryF, String loginNameF, String password, String confirmP) {
         new RegistrationPage(driver)
                 .selectContinueRegistrationButton()

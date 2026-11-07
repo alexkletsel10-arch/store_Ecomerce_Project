@@ -127,7 +127,6 @@ public class RegistrationPage extends BasePage {
     }
 
 public RegistrationPage verifyTooltipMessage(String expectedText) {
-
     WebElement tooltip = wait.until(
             ExpectedConditions.visibilityOfElementLocated(
                     By.xpath("//span[text()='" + expectedText + "']")
